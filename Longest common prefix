@@ -1,0 +1,30 @@
+public class Solution {
+    public string LongestCommonPrefix(string[] strs) {
+
+        
+        string result = FindCommonPrefix(strs);
+        Console.WriteLine("Common Prefix: " + result);
+        return result;
+    }
+
+     static string FindCommonPrefix(string[] words){
+
+        if (words.Length == 0 || words == null){
+            return "";
+        }
+        
+        string baseWord = words[0];
+        string commonPrefix = "";
+       
+       for (int i = 0; i < baseWord.Length; i++){
+
+           foreach (string word in words[1..]){
+               if (i >= word.Length || baseWord[i] != word[i]){
+                   return commonPrefix;
+               }
+           }
+           commonPrefix += baseWord[i];
+       }
+       return commonPrefix;
+    }
+}
